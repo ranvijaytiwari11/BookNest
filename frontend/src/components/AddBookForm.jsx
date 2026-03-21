@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
   const [formData, setFormData] = useState({
@@ -7,7 +8,10 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
     price: "",
     genre: "",
     image: "",
+    summary: "",
   });
+
+  const [aiLoading, setAiLoading] = useState(false);
 
   useEffect(() => {
     if (editBook) {
@@ -17,6 +21,7 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
         price: editBook.price || "",
         genre: editBook.genre || "",
         image: editBook.image || "",
+        summary: editBook.summary || "",
       });
     } else {
       setFormData({
@@ -25,6 +30,7 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
         price: "",
         genre: "",
         image: "",
+        summary: "",
       });
     }
   }, [editBook]);
@@ -34,6 +40,32 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleGenerateSummary = async () => {
+    if (!formData.title || !formData.author) {
+      alert("Pehle title aur author bhar do");
+      return;
+    }
+
+    try {
+      setAiLoading(true);
+
+      const res = await axios.post("http://localhost:5000/api/ai/summary", {
+        title: formData.title,
+        author: formData.author,
+      });
+
+      setFormData((prev) => ({
+        ...prev,
+        summary: res.data.summary,
+      }));
+    } catch (error) {
+      console.log("AI summary error:", error);
+      alert("AI summary generate nahi hui");
+    } finally {
+      setAiLoading(false);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -88,7 +120,32 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
         onChange={handleChange}
       />
 
+      <textarea
+        name="summary"
+        placeholder="AI generated summary"
+        value={formData.summary}
+        onChange={handleChange}
+        rows="4"
+        style={{
+          width: "100%",
+          padding: "12px",
+          marginBottom: "12px",
+          border: "1px solid #ccc",
+          borderRadius: "8px",
+          boxSizing: "border-box",
+          resize: "vertical",
+        }}
+      />
+
       <div className="form-actions">
+        <button
+          type="button"
+          className="secondary-btn"
+          onClick={handleGenerateSummary}
+        >
+          {aiLoading ? "Generating..." : "Generate AI Summary"}
+        </button>
+
         <button className="primary-btn" type="submit">
           {editBook ? "Update Book" : "Add Book"}
         </button>

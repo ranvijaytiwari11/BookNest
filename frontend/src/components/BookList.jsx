@@ -13,6 +13,12 @@ function BookList({ books, onDelete, onEdit }) {
             <p><strong>Price:</strong> ₹{book.price}</p>
             <p><strong>Genre:</strong> {book.genre}</p>
 
+            {book.summary && (
+              <p>
+                <strong>Summary:</strong> {book.summary}
+              </p>
+            )}
+
             {book.image && (
               <img
                 src={book.image}
