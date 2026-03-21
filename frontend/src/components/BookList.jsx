@@ -14,18 +14,25 @@ function BookList({ books, onDelete, onEdit }) {
             <p><strong>Genre:</strong> {book.genre}</p>
 
             {book.image && (
-              <img src={book.image} alt={book.title} className="book-image" />
+              <img
+                src={book.image}
+                alt={book.title}
+                className="book-image"
+              />
             )}
 
-            <div style={{ marginTop: "10px" }}>
+            <div className="book-actions">
               <button
+                className="delete-btn"
                 onClick={() => onDelete(book._id)}
-                style={{ marginRight: "10px" }}
               >
                 Delete
               </button>
 
-              <button onClick={() => onEdit(book)}>
+              <button
+                className="edit-btn"
+                onClick={() => onEdit(book)}
+              >
                 Edit
               </button>
             </div>

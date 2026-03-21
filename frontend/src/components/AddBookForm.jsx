@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-function AddBookForm({ onAddBook, editBook }) {
+function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
   const [formData, setFormData] = useState({
     title: "",
     author: "",
@@ -18,6 +18,14 @@ function AddBookForm({ onAddBook, editBook }) {
         genre: editBook.genre || "",
         image: editBook.image || "",
       });
+    } else {
+      setFormData({
+        title: "",
+        author: "",
+        price: "",
+        genre: "",
+        image: "",
+      });
     }
   }, [editBook]);
 
@@ -31,14 +39,6 @@ function AddBookForm({ onAddBook, editBook }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddBook(formData);
-
-    setFormData({
-      title: "",
-      author: "",
-      price: "",
-      genre: "",
-      image: "",
-    });
   };
 
   return (
@@ -88,9 +88,21 @@ function AddBookForm({ onAddBook, editBook }) {
         onChange={handleChange}
       />
 
-      <button type="submit">
-        {editBook ? "Update Book" : "Add Book"}
-      </button>
+      <div className="form-actions">
+        <button className="primary-btn" type="submit">
+          {editBook ? "Update Book" : "Add Book"}
+        </button>
+
+        {editBook && (
+          <button
+            type="button"
+            className="secondary-btn"
+            onClick={onCancelEdit}
+          >
+            Cancel
+          </button>
+        )}
+      </div>
     </form>
   );
 }

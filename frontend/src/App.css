@@ -2,30 +2,81 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f5f7fb;
+  color: #222;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-user {
+  font-size: 14px;
+  color: #555;
+}
+
+.nav-btn {
+  padding: 10px 14px;
+  background: #222;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logout-btn {
+  background: crimson;
+}
+
+.page-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .app {
   max-width: 900px;
-  margin: 30px auto;
+  margin: 10px auto 30px;
   padding: 20px;
 }
 
 h1 {
   text-align: center;
-  color: #222;
   margin-bottom: 8px;
 }
 
 .author-text {
   text-align: center;
-  color: #555;
+  color: #666;
   margin-bottom: 20px;
 }
 
-.search-box {
+.search-box,
+.input-field,
+.book-form input {
   width: 100%;
   padding: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
@@ -34,35 +85,9 @@ h1 {
 .book-form {
   background: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 25px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-.book-form h2 {
-  margin-top: 0;
-}
-
-.book-form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-sizing: border-box;
-}
-
-.book-form button {
-  padding: 10px 16px;
-  border: none;
-  background: #222;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.book-form button:hover {
-  background: #444;
 }
 
 .book-list {
@@ -73,31 +98,85 @@ h1 {
   background: white;
   padding: 16px;
   margin-bottom: 15px;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-.book-card h3 {
-  margin-top: 0;
 }
 
 .book-image {
   width: 120px;
   margin-top: 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   display: block;
 }
 
-.delete-btn {
+.book-actions,
+.form-actions {
+  display: flex;
+  gap: 10px;
   margin-top: 12px;
-  padding: 8px 12px;
+}
+
+.primary-btn,
+.secondary-btn,
+.delete-btn,
+.edit-btn {
+  padding: 10px 14px;
   border: none;
-  background: crimson;
-  color: white;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-.delete-btn:hover {
-  background: darkred;
+.primary-btn,
+.edit-btn {
+  background: #222;
+  color: white;
+}
+
+.secondary-btn {
+  background: #ddd;
+}
+
+.delete-btn {
+  background: crimson;
+  color: white;
+}
+
+.auth-page {
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.auth-card {
+  background: white;
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.auth-card h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.switch-text {
+  text-align: center;
+  margin-top: 14px;
+  color: #555;
+}
+
+.switch-text a {
+  color: #0b57d0;
+  font-weight: 600;
+}
+
+.error-text {
+  color: crimson;
+  margin-bottom: 12px;
+}
+
+.success-text {
+  color: green;
+  margin-bottom: 12px;
 }

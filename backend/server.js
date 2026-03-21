@@ -21,3 +21,6 @@ app.use("/api/books", bookRoutes);
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
+const authRoutes = require("./routes/authRoutes");
+
+app.use("/api/auth", authRoutes);
