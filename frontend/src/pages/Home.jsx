@@ -10,6 +10,7 @@ function Home() {
   const [message, setMessage] = useState("");
 
   const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user") || "null");
 
   const authConfig = {
     headers: {
@@ -96,10 +97,15 @@ function Home() {
 
   return (
     <div className="page-wrapper">
-      <div className="app">
+      <div className="hero-section">
         <h1>📚 BookNest Store</h1>
         <p className="author-text">Author: Ranvijay Tiwari</p>
+        <p className="hero-subtext">
+          {user ? `Welcome back, ${user.name}! Manage your personal book collection here.` : "Manage your personal book collection here."}
+        </p>
+      </div>
 
+      <div className="app">
         <input
           className="search-box"
           type="text"
@@ -121,6 +127,10 @@ function Home() {
           onDelete={deleteBook}
           onEdit={setEditBook}
         />
+
+        <footer className="footer">
+          <p>BookNest • MERN Stack Project • Ranvijay Tiwari</p>
+        </footer>
       </div>
     </div>
   );
