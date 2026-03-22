@@ -6,7 +6,7 @@ exports.generateSummary = async (req, res) => {
       return res.status(400).json({ error: "Title and author are required" });
     }
 
-    const summary = `${title} by ${author} is a thoughtful and engaging book. It introduces the reader to the core ideas, background, and importance of the subject in a simple and accessible way. This book is useful for readers who want a quick understanding of the topic and want to explore its practical and deeper meaning.`;
+    const summary = `${title} by ${author} is an engaging and informative book that helps readers understand its central ideas in a simple way. It is suitable for readers who want clarity, knowledge, and a quick overview of the subject. This book can be useful for both beginners and interested learners who want to explore the topic in an easy and meaningful manner.`;
 
     res.json({ summary });
   } catch (error) {

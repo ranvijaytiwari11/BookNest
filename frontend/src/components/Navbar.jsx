@@ -21,7 +21,7 @@ function Navbar() {
         {token ? (
           <>
             <span className="nav-user">
-              {user ? `Hi, ${user.name} `: "Logged In"}
+              {user ? `Hi, ${user.name}` : "Logged In"}
             </span>
             <button className="nav-btn logout-btn" onClick={handleLogout}>
               Logout

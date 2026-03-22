@@ -14,9 +14,7 @@ function BookList({ books, onDelete, onEdit }) {
             <p><strong>Genre:</strong> {book.genre}</p>
 
             {book.summary && (
-              <p>
-                <strong>Summary:</strong> {book.summary}
-              </p>
+              <p><strong>Summary:</strong> {book.summary}</p>
             )}
 
             {book.image && (
@@ -29,17 +27,17 @@ function BookList({ books, onDelete, onEdit }) {
 
             <div className="book-actions">
               <button
-                className="delete-btn"
-                onClick={() => onDelete(book._id)}
-              >
-                Delete
-              </button>
-
-              <button
                 className="edit-btn"
                 onClick={() => onEdit(book)}
               >
                 Edit
+              </button>
+
+              <button
+                className="delete-btn"
+                onClick={() => onDelete(book._id)}
+              >
+                Delete
               </button>
             </div>
           </div>

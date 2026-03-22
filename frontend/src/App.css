@@ -73,7 +73,8 @@ h1 {
 
 .search-box,
 .input-field,
-.book-form input {
+.book-form input,
+.book-form textarea {
   width: 100%;
   padding: 12px;
   margin-bottom: 12px;
@@ -114,6 +115,7 @@ h1 {
   display: flex;
   gap: 10px;
   margin-top: 12px;
+  flex-wrap: wrap;
 }
 
 .primary-btn,

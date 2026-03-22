@@ -9,52 +9,80 @@ function Home() {
   const [editBook, setEditBook] = useState(null);
   const [message, setMessage] = useState("");
 
+  const token = localStorage.getItem("token");
+
+  const authConfig = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   const fetchBooks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/books");
+      const res = await axios.get("http://localhost:5000/api/books", authConfig);
       setBooks(res.data);
     } catch (error) {
-      console.log("Error fetching books:", error);
+      console.log("Error fetching books:", error.response?.data || error.message);
     }
   };
 
   const addBook = async (bookData) => {
     try {
-      await axios.post("http://localhost:5000/api/books", {
-        ...bookData,
-        price: Number(bookData.price),
-      });
-      setMessage("Book added successfully");
-      fetchBooks();
-      setTimeout(() => setMessage(""), 2000);
-    } catch (error) {
-      console.log("Error adding book:", error);
-    }
-  };
+      await axios.post(
+        "http://localhost:5000/api/books",
+        {
+          ...bookData,
+          price: Number(bookData.price),
+        },
+        authConfig
+      );
 
-  const deleteBook = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/api/books/${id}`);
-      setMessage("Book deleted successfully");
+      setMessage("Book added successfully");
+      setEditBook(null);
       fetchBooks();
       setTimeout(() => setMessage(""), 2000);
     } catch (error) {
-      console.log("Error deleting book:", error);
+      console.log("Error adding book:", error.response?.data || error.message);
+      alert("Book add nahi hui");
     }
   };
 
   const updateBook = async (bookData) => {
     try {
-      await axios.put(`http://localhost:5000/api/books/${editBook._id}`, {
-        ...bookData,
-        price: Number(bookData.price),
-      });
-      setEditBook(null);
+      const bookId = editBook?._id;
+
+      if (!bookId) {
+        alert("Book id missing");
+        return;
+      }
+
+      await axios.put(
+        `http://localhost:5000/api/books/${bookId}`,
+        {
+          ...bookData,
+          price: Number(bookData.price),
+        }
+      );
+
       setMessage("Book updated successfully");
+      setEditBook(null);
       fetchBooks();
       setTimeout(() => setMessage(""), 2000);
     } catch (error) {
-      console.log("Error updating book:", error);
+      console.log("Error updating book:", error.response?.data || error.message);
+      alert("Book update nahi hui");
+    }
+  };
+
+  const deleteBook = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/books/${id}`, authConfig);
+      setMessage("Book deleted successfully");
+      fetchBooks();
+      setTimeout(() => setMessage(""), 2000);
+    } catch (error) {
+      console.log("Error deleting book:", error.response?.data || error.message);
+      alert("Book delete nahi hui");
     }
   };
 

@@ -36,10 +36,10 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
   }, [editBook]);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   const handleGenerateSummary = async () => {
@@ -61,7 +61,7 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
         summary: res.data.summary,
       }));
     } catch (error) {
-      console.log("AI summary error:", error);
+      console.log("AI summary error:", error.response?.data || error.message);
       alert("AI summary generate nahi hui");
     } finally {
       setAiLoading(false);
@@ -126,15 +126,6 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
         value={formData.summary}
         onChange={handleChange}
         rows="4"
-        style={{
-          width: "100%",
-          padding: "12px",
-          marginBottom: "12px",
-          border: "1px solid #ccc",
-          borderRadius: "8px",
-          boxSizing: "border-box",
-          resize: "vertical",
-        }}
       />
 
       <div className="form-actions">
@@ -149,7 +140,6 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
         <button className="primary-btn" type="submit">
           {editBook ? "Update Book" : "Add Book"}
         </button>
-
         {editBook && (
           <button
             type="button"
