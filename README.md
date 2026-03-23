@@ -1,22 +1,66 @@
-# BookNest
+# 📚 BookNest
 
-A full-stack MERN bookstore application with authentication and book management.
+BookNest is a full-stack MERN book management application where users can sign up, log in, and manage their own personal book collection. The project includes authentication, protected routes, book CRUD operations, search and filter functionality, image preview, dashboard statistics, and AI-generated book summaries using Google Gemini.
 
-## Features
-- Sign up
-- Sign in
-- Logout
-- Protected home route
-- Add books
-- Edit books
-- Delete books
-- Search books
+---
 
-## Tech Stack
-- MongoDB
-- Express.js
+## 🚀 Features
+
+- User Signup and Login
+- Protected Routes
+- User-specific Book Management
+- Add New Books
+- Edit Existing Books
+- Delete Books
+- Search Books by Title
+- Filter Books by Genre
+- Image URL Preview
+- Dashboard Statistics
+- AI-generated Book Summaries using Google Gemini API
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
 - React.js
-- Node.js
+- Vite
+- Axios
+- React Router DOM
+- CSS
 
-## Author
-Ranvijay Tiwari
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- dotenv
+
+### AI Integration
+- Google Gemini API
+
+---
+
+## 📁 Project Structure
+
+```bash
+BookNest/
+│
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── .env
+│   ├── package.json
+│   └── server.js
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── .gitignore
+└── README.md
