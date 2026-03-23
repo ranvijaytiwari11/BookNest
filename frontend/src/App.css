@@ -222,3 +222,87 @@ a {
   color: #666;
   font-size: 14px;
 }
+/* ===== DARK MODE ===== */
+body.dark {
+  background: #121212;
+  color: #ffffff;
+}
+
+body.dark .navbar,
+body.dark .hero-section,
+body.dark .stat-card,
+body.dark .book-form,
+body.dark .book-card,
+body.dark .auth-card,
+body.dark .empty-state {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark .author-text,
+body.dark .hero-subtext,
+body.dark .nav-user,
+body.dark .footer,
+body.dark .summary-text,
+body.dark .switch-text,
+body.dark .preview-label,
+body.dark .stat-card p {
+  color: #d1d1d1;
+}
+
+body.dark .search-box,
+body.dark .genre-select,
+body.dark .input-field,
+body.dark .book-form input,
+body.dark .book-form textarea {
+  background: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
+/* ===== FAVORITE ICON ===== */
+.fav-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+/* ===== PREMIUM UI TOUCH ===== */
+.hero-section {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+}
+
+.hero-section .author-text,
+.hero-section .hero-subtext {
+  color: #f3f3f3;
+}
+
+.book-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card {
+  transition: transform 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.nav-btn {
+  transition: 0.2s ease;
+}
+
+.nav-btn:hover,
+.edit-btn:hover,
+.delete-btn:hover,
+.primary-btn:hover,
+.secondary-btn:hover {
+  opacity: 0.92;
+}
