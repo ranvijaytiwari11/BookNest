@@ -115,15 +115,24 @@ a {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
-.book-card h3 {
-  margin-top: 0;
+.book-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
 }
 
 .book-image {
   width: 120px;
-  margin-top: 10px;
+  min-width: 120px;
   border-radius: 8px;
   display: block;
+}
+
+.summary-text {
+  margin-top: 12px;
+  color: #444;
+  line-height: 1.5;
 }
 
 .book-actions,
@@ -197,6 +206,14 @@ a {
 .success-text {
   color: green;
   margin-bottom: 12px;
+}
+
+.empty-state {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+  color: #666;
 }
 
 .footer {

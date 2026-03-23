@@ -51,7 +51,6 @@ function Home() {
   const updateBook = async (bookData) => {
     try {
       const bookId = editBook?._id;
-
       if (!bookId) {
         alert("Book id missing");
         return;
@@ -62,7 +61,8 @@ function Home() {
         {
           ...bookData,
           price: Number(bookData.price),
-        }
+        },
+        authConfig
       );
 
       setMessage("Book updated successfully");
@@ -101,7 +101,9 @@ function Home() {
         <h1>📚 BookNest Store</h1>
         <p className="author-text">Author: Ranvijay Tiwari</p>
         <p className="hero-subtext">
-          {user ? `Welcome back, ${user.name}! Manage your personal book collection here.` : "Manage your personal book collection here."}
+          {user
+            ? `Welcome back, ${user.name}! Manage your personal book collection here.`
+            : "Manage your personal book collection here."}
         </p>
       </div>
 

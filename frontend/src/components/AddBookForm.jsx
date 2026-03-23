@@ -125,7 +125,7 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
         placeholder="AI generated summary"
         value={formData.summary}
         onChange={handleChange}
-        rows="4"
+        rows="5"
       />
 
       <div className="form-actions">
@@ -140,6 +140,7 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
         <button className="primary-btn" type="submit">
           {editBook ? "Update Book" : "Add Book"}
         </button>
+
         {editBook && (
           <button
             type="button"
