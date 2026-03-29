@@ -44,7 +44,16 @@ function Signup() {
         navigate("/login");
       }, 1200);
     } catch (err) {
-      setError(err.response?.data?.message || "Signup failed");
+      if (err.response) {
+        // Backend actively rejected the request (e.g., User exists, 500 error)
+        setError("Backend Error: " + (err.response.data.message || err.response.data.error || "Unknown Response"));
+      } else if (err.request) {
+        // Network error, CORS error, or complete failure to reach backend URL
+        setError("Network/URL Error: Could not reach the API. URL may be broken or down: " + err.message);
+      } else {
+        // Something else went wrong
+        setError("Error setting up request: " + err.message);
+      }
     }
   };
 
