@@ -20,7 +20,7 @@ function Home() {
 
   const fetchBooks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/books", authConfig);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/books`, authConfig);
       setBooks(res.data);
     } catch (error) {
       console.log("Error fetching books:", error.response?.data || error.message);
@@ -30,7 +30,7 @@ function Home() {
   const addBook = async (bookData) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/books",
+        `${import.meta.env.VITE_API_URL}/api/books`,
         {
           ...bookData,
           price: Number(bookData.price),
@@ -57,7 +57,7 @@ function Home() {
       }
 
       await axios.put(
-        `http://localhost:5000/api/books/${bookId}`,
+        `${import.meta.env.VITE_API_URL}/api/books/${bookId}`,
         {
           ...bookData,
           price: Number(bookData.price),
@@ -77,7 +77,7 @@ function Home() {
 
   const deleteBook = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/books/${id}`, authConfig);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/books/${id}`, authConfig);
       setMessage("Book deleted successfully");
       fetchBooks();
       setTimeout(() => setMessage(""), 2000);
