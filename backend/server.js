@@ -23,8 +23,11 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/books", bookRoutes);
+app.use("/books", bookRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
 app.use("/api/ai", aiRoutes);
+app.use("/ai", aiRoutes);
 
 if (process.env.NODE_ENV !== 'production') {
   app.listen(5000, () => {

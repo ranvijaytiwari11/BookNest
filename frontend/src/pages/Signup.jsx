@@ -33,7 +33,7 @@ function Signup() {
     }
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
+      await axios.post(`${"https://book-nest-backend.vercel.app"}/api/auth/register`, {
         name: formData.name,
         email: formData.email,
         password: formData.password,
@@ -49,7 +49,8 @@ function Signup() {
         setError("Backend Error: " + (err.response.data.message || err.response.data.error || "Unknown Response"));
       } else if (err.request) {
         // Network error, CORS error, or complete failure to reach backend URL
-        setError("Network/URL Error: Could not reach the API. URL may be broken or down: " + err.message);
+        const triedUrl = import.meta.env.VITE_API_URL || "undefined (MISSING ENV VARIABLE)";
+        setError(`Network Error: Tried to contact ${triedUrl}/api/auth/register. It failed!`);
       } else {
         // Something else went wrong
         setError("Error setting up request: " + err.message);

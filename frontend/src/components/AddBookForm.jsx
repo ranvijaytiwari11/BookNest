@@ -51,7 +51,7 @@ function AddBookForm({ onAddBook, editBook, onCancelEdit }) {
     try {
       setAiLoading(true);
 
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/summary`, {
+      const res = await axios.post(`${"https://book-nest-backend.vercel.app"}/api/ai/summary`, {
         title: formData.title,
         author: formData.author,
       });
